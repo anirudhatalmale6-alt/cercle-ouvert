@@ -1,0 +1,474 @@
+@charset "utf-8";
+/* Association — feuille de style unique.
+
+   Palette : rose, demandée par le client. Elle est tenue en prune profond
+   et rose sourd plutôt qu'en rose bonbon — même famille de teinte, et
+   c'est la seule qui laisse le texte lisible : le rose clair tombe à
+   2,37:1 sur la crème, il ne sert donc jamais de texte sur fond clair.
+
+   Registre : sobre, chaud, sans mièvrerie. Chapitre 11 du cahier des
+   charges : « sobre, respectueuse et protectrice », « valoriser la dignité
+   des mères accompagnées sans exposition excessive ni victimisation ».
+   Restent donc exclus le cœur, les mains jointes, et la photographie d'une
+   femme qui regarde par la fenêtre.
+
+   Chaque couleur de TEXTE a été calculée sur son fond réel avant d'être
+   écrite ici, puis remesurée dans un navigateur. Les valeurs sont dans le
+   README. */
+
+/* ------------------------------------------------------------- polices
+   Servies depuis le site. Aucune requête ne part vers un tiers : c'est ce
+   qui permet à la page Confidentialité de l'affirmer, et cette
+   affirmation est vérifiée au rendu, pas supposée. Sur ce site-ci une
+   police chargée chez un tiers transmettrait à ce tiers l'adresse exacte
+   de la page lue. */
+@font-face{font-family:Playfair;font-style:normal;font-weight:400 900;
+ font-display:swap;src:url(fonts/playfair-latin.woff2) format("woff2");
+ unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,
+ U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,
+ U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Playfair;font-style:normal;font-weight:400 900;
+ font-display:swap;src:url(fonts/playfair-latin-ext.woff2) format("woff2");
+ unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,
+ U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,
+ U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Inter;font-style:normal;font-weight:100 900;
+ font-display:swap;src:url(fonts/inter-latin.woff2) format("woff2");
+ unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,
+ U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,
+ U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Inter;font-style:normal;font-weight:100 900;
+ font-display:swap;src:url(fonts/inter-latin-ext.woff2) format("woff2");
+ unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,
+ U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,
+ U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+:root{
+ --creme:#FAF5F3;
+ --blanc:#FFFFFF;
+ --encre:#2A2226;          /* 14,33:1 sur crème */
+ --encre-doux:#544A50;     /*  8,49:1 sur blanc — bordures de champ */
+ --gris:#5E545A;           /*  6,72:1 sur crème — texte secondaire */
+ --prune:#6E2444;          /*  9,72:1 sur crème — titres et liens */
+ --fonce:#3A1E2E;
+ --nuit:#2A1420;
+ --rose:#D98BA6;           /* DÉCOR seulement : 2,37:1 sur crème */
+ --rose-texte:#8E3155;     /*  7,14:1 sur crème — le seul rose lisible ici */
+ --clair:#F2E6E9;          /* 12,29:1 sur foncé, 14,16:1 sur nuit */
+ --rose-clair:#F0C4D2;     /*  9,63:1 sur foncé — intertitres sur fond sombre */
+ --tuile:#F6E4EA;
+ --badge:#7A2540;          /*  7,94:1 sur tuile */
+ --rouge:#8A1B1B;          /*  9,32:1 sur blanc */
+ --entete:66px;
+ --rayon:4px;
+ --serif:Playfair,"Iowan Old Style",Georgia,"Times New Roman",serif;
+ --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,
+   sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--encre);
+ font:400 17px/1.68 var(--sans);
+ -webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+
+/* Une image qui porte un attribut height et pas celui-ci se retrouve
+   écrasée dès qu'une largeur fluide s'applique, sans que rien ne signale
+   l'erreur. Le contrôle de proportions du dossier de vérification a été
+   écrit pour ça. */
+img,svg{max-width:100%}
+img{height:auto;display:block}
+
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.2;
+ color:var(--prune);margin:0 0 .5em}
+h1{font-size:clamp(1.95rem,1.3rem + 2.5vw,3rem);margin-bottom:.35em}
+h2{font-size:clamp(1.42rem,1.18rem + 1vw,1.95rem)}
+h3{font-size:1.14rem;font-family:var(--sans);font-weight:650;
+ color:var(--fonce)}
+p{margin:0 0 1.05em}
+a{color:var(--prune);text-underline-offset:.18em;
+ text-decoration-thickness:1px}
+a:hover{color:var(--fonce)}
+address{font-style:normal}
+hr{border:0}
+
+:focus-visible{outline:3px solid var(--prune);outline-offset:3px;
+ border-radius:2px}
+.util :focus-visible,.heros :focus-visible,.pied :focus-visible,
+.panneau :focus-visible{outline-color:var(--rose-clair)}
+
+.vh{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;
+ overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
+/* Le lien d'évitement se cache VERS LE HAUT, pas à gauche. À
+   left:-9999px il pollue tout contrôle « quelque chose dépasse-t-il ? »,
+   et ce contrôle est celui qui trouve les débordements réels. */
+.saut{position:absolute;left:12px;top:-140px;z-index:60;
+ background:var(--nuit);color:var(--creme);padding:11px 17px;
+ border-radius:var(--rayon);text-decoration:none;font-weight:600}
+.saut:focus{top:10px}
+
+.dans{width:100%;max-width:1140px;margin:0 auto;padding:0 22px}
+main{display:block}
+main:focus{outline:none}
+
+/* Une ancre qui atterrit sous l'en-tête collant est une ancre cassée, et
+   ça ne se voit qu'à la largeur où l'en-tête est le plus haut. */
+[id]{scroll-margin-top:calc(var(--entete) + 24px)}
+
+/* --------------------------------------------------------- barre utilitaire */
+.util{background:var(--nuit);color:#DCC9D1;font-size:.84rem}
+.util .dans{display:flex;align-items:center;gap:14px;min-height:40px;
+ flex-wrap:wrap}
+.util a{color:#F2E6E9;text-decoration:none}
+.util a:hover{text-decoration:underline}
+.util .mention{color:#C9B5BE;margin-right:auto;letter-spacing:.02em}
+.util .langue{border:1px solid rgba(242,230,233,.42);padding:3px 11px;
+ border-radius:99px}
+/* La sortie rapide est le seul élément de la barre qui doit se trouver
+   sans le chercher. Elle est donc contrastée, encadrée, et jamais
+   déplacée d'une page à l'autre. */
+.util .sortie{border:1px solid var(--rose-clair);color:var(--rose-clair);
+ padding:3px 12px;border-radius:99px;font-weight:650}   /* 11,10:1 */
+.util .sortie:hover{background:var(--rose-clair);color:var(--nuit)}
+
+/* -------------------------------------------------------------- en-tête */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(250,245,243,.97);
+ backdrop-filter:saturate(1.3) blur(6px);
+ border-bottom:1px solid rgba(217,139,166,.4)}
+.hdr .dans{display:flex;align-items:center;gap:18px;min-height:var(--entete)}
+.marque{display:flex;align-items:center;gap:11px;text-decoration:none;
+ color:var(--fonce);flex:0 0 auto;padding:6px 0}
+.marque img{width:34px;height:34px;flex:0 0 auto}
+.bloc-nom{display:flex;flex-direction:column;line-height:1.1}
+.marque .nom{font-family:var(--serif);font-size:1.3rem;font-weight:600}
+/* Le nom affiché n'est pas validé. Le dire une fois dans un pied de page
+   ne suffit pas : c'est le nom lui-même qu'il faut marquer, à l'endroit
+   où on le lit. */
+.marque .prov{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+ color:var(--rose-texte);font-weight:650}          /* 7,14:1 */
+.marque .base{display:none;color:var(--gris);font-size:.78rem;
+ letter-spacing:.08em;text-transform:uppercase;padding-left:14px;
+ border-left:1px solid rgba(217,139,166,.55)}
+.panneau-nav{margin-left:auto;display:flex;align-items:center;gap:20px}
+.panneau-nav nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0}
+.panneau-nav nav a{color:var(--encre);text-decoration:none;font-size:.95rem;
+ font-weight:520;padding:6px 0;border-bottom:2px solid transparent;
+ white-space:nowrap}
+.cta-nav{white-space:nowrap}
+.panneau-nav nav a:hover{color:var(--prune);
+ border-bottom-color:rgba(217,139,166,.8)}
+.panneau-nav nav a[aria-current]{color:var(--prune);font-weight:650;
+ border-bottom-color:var(--rose)}
+.burger{display:none}
+
+/* --------------------------------------------------------------- boutons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+ padding:12px 22px;border-radius:var(--rayon);text-decoration:none;
+ font:600 .96rem/1.2 var(--sans);border:1px solid transparent;cursor:pointer;
+ min-height:46px;text-align:center}
+.btn-fonce{background:var(--fonce);color:#FAF5F3}          /* 13,82:1 */
+.btn-fonce:hover{background:var(--nuit);color:var(--creme)}
+.btn-ligne{background:transparent;color:var(--prune);border-color:var(--prune)}
+.btn-ligne:hover{background:var(--prune);color:var(--creme)}
+.btn-clair{background:var(--creme);color:var(--fonce)}     /* 13,82:1 */
+.btn-clair:hover{background:var(--blanc);color:var(--nuit)}
+.btn-sortie{background:transparent;color:var(--rose-texte);
+ border-color:var(--rose-texte)}                          /* 7,14:1 */
+.btn-sortie:hover{background:var(--rose-texte);color:var(--creme)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:1.4em 0 1.1em}
+
+/* ----------------------------------------------------------------- héros */
+/* `.heros` est un <section> et hériterait donc de `section{margin:46px 0}`,
+   ce qui glisserait une bande de crème entre l'en-tête et le héros sans
+   qu'aucune règle ne l'ait demandé. */
+.heros{background:var(--fonce);color:#EFE2E7;position:relative;
+ overflow:hidden;margin:0}
+.heros::before{content:"";position:absolute;inset:0;
+ background:url(tuile.svg) repeat;background-size:190px 190px;opacity:.13;
+ pointer-events:none}
+.heros .dans{position:relative;padding-top:54px;padding-bottom:54px}
+.heros-grille{display:grid;gap:34px;grid-template-columns:minmax(0,1fr);
+ align-items:center}
+.heros h1{color:var(--creme)}
+.heros .chapo{font-size:1.14rem;color:#E8DAE0;max-width:34em}
+.heros-marque{width:70px;height:70px;margin-bottom:18px}
+.heros-image{display:flex;justify-content:center}
+.heros-image img{width:100%;max-width:330px;height:auto;
+ border:1px solid rgba(242,230,233,.3);border-radius:var(--rayon)}
+.heros .btn-ligne{color:var(--rose-clair);border-color:var(--rose-clair)}
+.heros .btn-ligne:hover{background:var(--rose-clair);color:var(--nuit)}
+
+/* --------------------------------------------------------------- sections */
+section{margin:46px 0}
+.chapo{font-size:1.12rem;color:var(--encre);max-width:38em}
+.note{color:var(--gris);font-size:.94rem;max-width:46em}
+.mini{color:var(--gris);font-size:.88rem}
+
+.frise{height:22px;margin:44px 0;background:url(frise.svg) center/auto 22px
+ repeat-x;opacity:.6}
+
+/* Deux colonnes déclarées comme telles. `auto-fit` avec un minimum en
+   pixels en tire trois dès que la place existe, ce qui casse la lecture
+   par paires ; et `minmax(0,1fr)` ne peut pas déborder, contrairement à un
+   minimum en pixels. */
+.g2{display:grid;gap:24px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:800px){
+ .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.g3{display:grid;gap:20px;
+ grid-template-columns:repeat(auto-fit,minmax(min(262px,100%),1fr))}
+ul.cartes{list-style:none;margin:0;padding:0}
+.carte{background:var(--blanc);border:1px solid rgba(42,34,38,.1);
+ border-left:3px solid var(--rose);border-radius:var(--rayon);
+ padding:20px 22px 4px}
+.carte h3{margin-bottom:.4em}
+.carte p{color:var(--encre)}
+.limites .carte{border-left-color:var(--prune)}
+
+.puces{margin:0 0 1.2em;padding-left:1.15em;max-width:52em}
+.puces li{margin-bottom:.55em}
+.regles li::marker{color:var(--rose-texte)}
+
+/* ------------------------------------------------------------- le parcours
+   Une liste ordonnée, numérotée par le compteur du navigateur : les
+   numéros ne sont jamais écrits dans le texte, donc insérer une étape ne
+   peut pas les décaler à la main. */
+.etapes{list-style:none;counter-reset:pas;margin:0 0 1.2em;padding:0;
+ display:grid;gap:14px}
+.etapes li{counter-increment:pas;background:var(--blanc);
+ border:1px solid rgba(42,34,38,.1);border-radius:var(--rayon);
+ padding:18px 20px 4px 62px;position:relative}
+.etapes li::before{content:counter(pas);position:absolute;left:18px;top:18px;
+ width:30px;height:30px;border-radius:50%;background:var(--tuile);
+ color:var(--badge);                                  /* 7,94:1 sur tuile */
+ border:1px solid rgba(217,139,166,.55);
+ display:flex;align-items:center;justify-content:center;
+ font:650 .95rem/1 var(--sans)}
+.etapes h3{margin-bottom:.3em}
+
+/* ------------------------------------------------------- tableau d'activités
+   Le cadre défile, pas la page. Il est focalisable au clavier parce qu'une
+   zone qui défile et qu'on ne peut pas atteindre au clavier est une zone
+   dont le contenu n'existe pas pour qui n'a pas de souris. */
+.cadre-tableau{overflow-x:auto;border:1px solid rgba(42,34,38,.14);
+ border-radius:var(--rayon);background:var(--blanc)}
+table.activites{border-collapse:collapse;width:100%;min-width:520px;
+ font-size:.96rem}
+.activites th,.activites td{text-align:left;padding:13px 16px;
+ border-bottom:1px solid rgba(42,34,38,.1);vertical-align:top}
+.activites thead th{background:var(--tuile);color:var(--fonce);
+ font:650 .82rem/1.3 var(--sans);letter-spacing:.06em;text-transform:uppercase}
+.activites tbody th{font-weight:650;color:var(--fonce);width:32%}
+.activites tbody tr:last-child th,.activites tbody tr:last-child td{
+ border-bottom:0}
+.activites .freq{color:var(--rose-texte);font-weight:650;
+ white-space:nowrap}                                   /* 7,72:1 sur blanc */
+
+/* ------------------------------------------------- le mot de l'attente
+   `.carte p` vaut (0,1,1) et bat `.att` seul (0,1,0), quel que soit
+   l'ordre d'écriture. Le badge perdrait sa couleur dans les cartes sans
+   qu'aucun contrôle de code ne s'en aperçoive — seule une mesure de la
+   couleur rendue le voit. D'où les sélecteurs qualifiés. */
+p.att,span.att,li.att,strong.att,.att{display:inline-flex;align-items:center;
+ background:var(--tuile);border:1px solid rgba(217,139,166,.55);
+ color:var(--badge);                                   /* 7,94:1 sur tuile */
+ font:650 .74rem/1 var(--sans);letter-spacing:.085em;text-transform:uppercase;
+ padding:5px 9px;border-radius:99px;white-space:nowrap}
+
+.liste-attente{list-style:none;margin:0;padding:0;display:grid;gap:2px;
+ border:1px solid rgba(42,34,38,.12);border-radius:var(--rayon);
+ background:rgba(42,34,38,.12);overflow:hidden}
+.liste-attente li{background:var(--blanc);padding:16px 18px;display:grid;
+ gap:6px;justify-items:start}
+.liste-attente strong{font-size:1.02rem;color:var(--fonce);
+ font-family:var(--sans);font-weight:650}
+.liste-attente .cond{color:var(--gris);font-size:.94rem;justify-self:stretch}
+
+/* ------------------------------------------------------ mention de prudence */
+.prudence{background:var(--blanc);border-left:3px solid var(--rose);
+ border-top:1px solid rgba(42,34,38,.1);
+ border-right:1px solid rgba(42,34,38,.1);
+ border-bottom:1px solid rgba(42,34,38,.1);
+ padding:18px 20px 4px;margin:32px 0;
+ border-radius:0 var(--rayon) var(--rayon) 0}
+.prudence p{color:var(--encre);font-size:.97rem;max-width:54em}
+.prudence .confid{font-weight:650;color:var(--rose-texte)}   /* 7,72:1 */
+
+/* ------------------------------------------------------------- fil d'Ariane */
+.fil{margin:20px 0 6px;font-size:.88rem;color:var(--gris)}
+.fil ol{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+.fil li+li::before{content:"\203A";margin-right:8px;color:var(--rose-texte)}
+.fil a{color:var(--gris)}
+
+/* ------------------------------------------------------------- panneaux */
+.panneau{margin:0 auto;max-width:360px;position:sticky;
+ top:calc(var(--entete) + 20px)}
+.panneau img{width:100%;height:auto;border-radius:var(--rayon);
+ border:1px solid rgba(217,139,166,.34)}
+.panneau figcaption{color:var(--gris);font-size:.86rem;margin-top:10px}
+.service-grille{align-items:start}
+
+/* -------------------------------------------------------------- formulaire */
+.formulaire{background:var(--blanc);border:1px solid rgba(42,34,38,.12);
+ border-radius:var(--rayon);padding:24px}
+.avertissement{background:var(--tuile);border:1px solid rgba(217,139,166,.55);
+ color:#3A1622;padding:13px 15px;border-radius:var(--rayon);font-size:.95rem}
+.champ{display:grid;gap:5px;margin:0 0 18px}
+.champ label{font-weight:600;color:var(--fonce);font-size:.97rem}
+.champ .aide{color:var(--gris);font-size:.87rem}
+.champ .req{color:var(--rose-texte)}
+input[type=text],select,textarea{font:400 1rem/1.5 var(--sans);
+ color:var(--encre);background:var(--blanc);
+ border:1px solid var(--encre-doux);  /* 8,49:1 : la bordure porte du sens */
+ border-radius:var(--rayon);padding:11px 12px;width:100%;min-height:46px}
+textarea{resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible{
+ border-color:var(--prune)}
+.case label{display:flex;gap:10px;align-items:flex-start;font-weight:400;
+ color:var(--encre);font-size:.97rem;cursor:pointer}
+.case input{margin-top:4px;width:19px;height:19px;flex:0 0 auto;
+ accent-color:var(--prune)}
+.erreur{color:var(--rouge);font-size:.88rem;font-weight:600}   /* 9,32:1 */
+.erreur:empty{display:none}
+.champ.faux input,.champ.faux select,.champ.faux textarea{
+ border-color:var(--rouge);border-width:2px}
+.lien-conf{font-size:.92rem}
+.etat{font-weight:600;color:var(--prune)}
+.etat:empty{display:none}
+.form-grille{align-items:start}
+
+/* ------------------------------------------------------------------- pied */
+.pied{background:var(--nuit);color:#DCC9D1;margin-top:64px;position:relative;
+ overflow:hidden}
+.pied::before{content:"";position:absolute;inset:0;
+ background:url(tuile.svg) repeat;background-size:210px 210px;opacity:.09;
+ pointer-events:none}
+.pied .dans{position:relative;padding-top:46px;padding-bottom:34px}
+.pied .cols{display:grid;gap:30px;
+ grid-template-columns:repeat(auto-fit,minmax(min(208px,100%),1fr))}
+.pied h2{font-family:var(--sans);font-size:.79rem;letter-spacing:.13em;
+ text-transform:uppercase;color:var(--rose-clair);margin-bottom:.9em}
+.pied ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.pied a{color:#F2E6E9;text-decoration:none}                /* 14,16:1 */
+.pied a:hover{color:var(--rose-clair);text-decoration:underline}
+.pied p{margin:0 0 .7em}
+.pied .col-marque img{width:40px;height:40px;margin-bottom:12px}
+.pied .col-marque strong{font-family:var(--serif);font-size:1.18rem;
+ color:var(--creme);font-weight:600}
+.pied .prov-pied{color:#C1AAB4;font-size:.82rem}           /* 8,96:1 */
+.pied .bas{border-top:1px solid rgba(240,196,210,.26);margin-top:34px;
+ padding-top:20px}
+.pied .bas p{color:#C9B5BE;font-size:.88rem;max-width:70em}
+.pied .bas .mini{color:#C1AAB4;font-size:.82rem}
+
+/* ------------------------------------------------------- barre mobile */
+.barre-mobile{display:none}
+
+/* -------------------------------------------------------- page aiguillage */
+.p-aiguillage main{max-width:520px;padding-top:16vh;text-align:center}
+.p-aiguillage img{margin:0 auto 18px;width:76px;height:76px}
+.p-aiguillage p{font-size:1.1rem}
+
+/* ---------------------------------------------------------- bandeau démo */
+.bandeau-demo{background:var(--prune);color:#FAF5F3;margin:0;
+ padding:9px 22px;font-size:.85rem;text-align:center}     /* 9,40:1 */
+
+/* ------------------------------------------------------------ adaptations */
+/* La signature à côté du nom n'apparaît qu'à partir de 1260 px. Entre le
+   point où elle s'affichait et celui où le menu déroulant prend le relais,
+   l'en-tête portait le logo, le nom, la signature, cinq liens et le bouton
+   d'appel à l'action — et les libellés français sont plus longs que les
+   anglais. Une barre de défilement horizontale fait deux pixels : aucune
+   capture ne la montre. */
+@media (min-width:1260px){
+ .marque .base{display:inline-block;align-self:center}
+}
+
+@media (min-width:900px){
+ .heros-grille{grid-template-columns:1.25fr .75fr}
+}
+
+@media (max-width:1000px){
+ :root{--entete:62px}
+ .burger{display:inline-flex;align-items:center;justify-content:center;
+  margin-left:auto;width:46px;height:46px;background:transparent;
+  border:1px solid rgba(42,34,38,.24);border-radius:var(--rayon);
+  cursor:pointer}
+ .burger .barres,.burger .barres::before,.burger .barres::after{
+  display:block;width:20px;height:2px;background:var(--fonce);
+  border-radius:2px;position:relative}
+ .burger .barres::before,.burger .barres::after{content:"";position:absolute}
+ .burger .barres::before{top:-6px}
+ .burger .barres::after{top:6px}
+ .burger[aria-expanded=true] .barres{background:transparent}
+ .burger[aria-expanded=true] .barres::before{top:0;transform:rotate(45deg)}
+ .burger[aria-expanded=true] .barres::after{top:0;transform:rotate(-45deg)}
+ .panneau-nav{display:none;position:absolute;left:0;right:0;
+  top:var(--entete);background:var(--creme);
+  border-bottom:1px solid rgba(217,139,166,.42);
+  box-shadow:0 14px 30px rgba(42,20,32,.14);
+  flex-direction:column;align-items:stretch;gap:0;padding:8px 22px 20px}
+ .panneau-nav.ouvert{display:flex}
+ .panneau-nav nav ul{flex-direction:column;gap:0}
+ .panneau-nav nav li+li{border-top:1px solid rgba(42,34,38,.1)}
+ .panneau-nav nav a{display:block;padding:13px 0;font-size:1.03rem;
+  border-bottom:0}
+ .panneau-nav nav a[aria-current]{border-bottom:0}
+ .cta-nav{margin-top:14px}
+ .panneau{position:static}
+}
+
+@media (max-width:760px){
+ body{font-size:16px;padding-bottom:74px}
+ .heros .dans{padding-top:36px;padding-bottom:36px}
+ section{margin:36px 0}
+ .frise{margin:32px 0}
+ .util .mention{display:none}
+ /* Les deux gestes qui doivent rester à portée de pouce : demander un
+    premier contact, et partir. Le corps réserve exactement la hauteur de
+    la barre, sinon elle masque la dernière ligne du pied. */
+ .barre-mobile{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:55;
+  gap:9px;padding:9px 12px;background:rgba(250,245,243,.98);
+  border-top:1px solid rgba(217,139,166,.5);
+  box-shadow:0 -8px 22px rgba(42,20,32,.12)}
+ .barre-mobile .btn{flex:1 1 0;min-height:48px;padding:12px 8px;
+  font-size:.92rem}
+ .etapes li{padding:18px 18px 4px 56px}
+}
+
+/* À 320 px les deux libellés passaient à la ligne : la barre montait à
+   80 px alors que le corps n'en réservait que 74, et les six derniers
+   pixels du pied disparaissaient dessous. Deux corrections, parce qu'une
+   seule reposerait sur les métriques d'une police qui peut ne pas se
+   charger : le libellé rétrécit, ET la réserve prend de la marge. */
+@media (max-width:420px){
+ body{padding-bottom:88px}
+ .barre-mobile .btn{font-size:.84rem;padding:12px 6px;letter-spacing:-.005em}
+}
+
+@media (max-width:420px){
+ .dans{padding:0 16px}
+ .bandeau-demo{padding:9px 16px;font-size:.8rem}
+ .carte{padding:17px 18px 3px}
+ .formulaire{padding:18px}
+ .marque .nom{font-size:1.16rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation-duration:.001ms!important;
+  animation-iteration-count:1!important;transition-duration:.001ms!important;
+  scroll-behavior:auto!important}
+}
+
+@media print{
+ .util,.hdr,.barre-mobile,.saut,.bandeau-demo,.panneau,.frise{display:none}
+ body{background:#fff;color:#000;font-size:11pt;padding-bottom:0}
+ .heros{background:#fff;color:#000}
+ .heros h1,.heros .chapo{color:#000}
+ .heros::before,.pied::before{display:none}
+ .pied{background:#fff;color:#000;margin-top:24px}
+ .pied a,.pied h2,.pied .bas p,.pied .prov-pied{color:#000}
+ a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt}
+ .carte,.formulaire,.etapes li,.cadre-tableau{break-inside:avoid}
+}

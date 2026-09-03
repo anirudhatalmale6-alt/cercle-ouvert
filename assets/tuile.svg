@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 170" width="170" height="170" role="img" aria-label="Motif de fond">
+<g fill="none" stroke="#D98BA6" stroke-width="1.4" stroke-linecap="round">
+<path d="M 30.871 -60.588 A 68 68 0 1 1 -30.871 -60.588"/>
+<path d="M 200.871 -60.588 A 68 68 0 1 1 139.129 -60.588"/>
+<path d="M 30.871 109.412 A 68 68 0 1 1 -30.871 109.412"/>
+<path d="M 200.871 109.412 A 68 68 0 1 1 139.129 109.412"/>
+<path d="M 60.554 115.014 A 47.6 47.6 0 1 1 111.14 88.117"/>
+</g>
+<circle cx="68" cy="68" r="3" fill="#D98BA6"/>
+</svg>

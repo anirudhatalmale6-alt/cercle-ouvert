@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Le cercle ouvert">
+<g fill="none" stroke-linecap="round">
+<path d="M 139.143 34.855 A 76 76 0 1 1 60.857 34.855" stroke="#F2E6E9" stroke-width="14"/>
+<path d="M 93.117 143.458 A 44 44 0 1 1 139.878 118.595" stroke="#F2E6E9" stroke-width="10"/>
+</g>
+<circle cx="100" cy="100" r="11" fill="#F2E6E9"/>
+</svg>

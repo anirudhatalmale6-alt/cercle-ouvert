@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 520" width="420" height="520" role="img" aria-label="Panneau ornemental">
+<rect width="420" height="520" fill="#3A1E2E"/>
+<g fill="none" stroke-linecap="round">
+<path d="M 221.8 209.994 A 31.5 31.5 0 1 1 198.2 209.994" stroke="#D98BA6" stroke-width="5.4" opacity="0.92"/>
+<path d="M 258.342 216.658 A 53.34 53.34 0 1 1 225.595 188.191" stroke="#F2E6E9" stroke-width="4.98" opacity="0.865"/>
+<path d="M 281.5 262.432 A 75.18 75.18 0 1 1 272.327 197.16" stroke="#D98BA6" stroke-width="4.56" opacity="0.81"/>
+<path d="M 257.036 324.056 A 97.02 97.02 0 1 1 306.651 247.656" stroke="#D98BA6" stroke-width="4.14" opacity="0.755"/>
+<path d="M 181.245 354.529 A 118.86 118.86 0 1 1 295.501 321.767" stroke="#F2E6E9" stroke-width="3.72" opacity="0.7"/>
+<path d="M 91.999 315.831 A 140.7 140.7 0 1 1 227.147 378.851" stroke="#D98BA6" stroke-width="3.3" opacity="0.645"/>
+<path d="M 49.929 210.975 A 162.54 162.54 0 1 1 123.867 377.042" stroke="#D98BA6" stroke-width="2.88" opacity="0.59"/>
+</g>
+<circle cx="210" cy="239.2" r="7.5" fill="#F2E6E9"/>
+<path d="M 58.8 444.6 L 361.2 444.6" stroke="#D98BA6" stroke-width="1.6" opacity="0.55"/>
+</svg>
